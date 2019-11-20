@@ -1,14 +1,12 @@
 CONTRACT=marketplace
 
-all: $(CONTRACT).wast $(CONTRACT).abi
+all: $(CONTRACT).wasm
 
 
 
-%.wast: %.cpp
-	eosiocpp -o $@ $<
+%.wasm: %.cpp
+	eosio-cpp $<
 
-%.abi: %.cpp
-	eosiocpp -g $@ $<
 
 clean:
-	rm -f $(CONTRACT).abi $(CONTRACT).wast $(CONTRACT).wasm
+	rm -f $(CONTRACT).abi $(CONTRACT).wasm
